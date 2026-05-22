@@ -10,12 +10,40 @@ var pageToView = {
   'read':   'view-reader'
 };
 
+// ---- BACKGROUND MUSIC ----
+var bgMusic = document.getElementById('bgMusic');
+var musicBtns = document.querySelectorAll('.music-btn');
+
+function setMusicPlaying(playing) {
+  musicBtns.forEach(function(btn) {
+    btn.classList.toggle('is-playing', playing);
+    btn.setAttribute('aria-label', playing ? 'Pause musik' : 'Play musik');
+  });
+}
+
+bgMusic.addEventListener('play', function() { setMusicPlaying(true); });
+bgMusic.addEventListener('pause', function() { setMusicPlaying(false); });
+
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('.music-btn');
+  if (!btn) return;
+  if (bgMusic.paused) {
+    bgMusic.play().catch(function() {});
+  } else {
+    bgMusic.pause();
+  }
+});
+
 function showView(id, pushState) {
   document.querySelectorAll('.view').forEach(function(v) {
     v.classList.remove('is-active');
   });
   document.querySelectorAll('#view-reader video').forEach(function(v) { v.pause(); });
   jxPlayers.forEach(function(p) { try { p.pause(); } catch(e) {} });
+
+  if (id !== 'view-reader') {
+    bgMusic.pause();
+  }
 
   var target = document.getElementById(id);
   target.classList.add('is-active');
@@ -24,6 +52,7 @@ function showView(id, pushState) {
   } else {
     var reader = target.querySelector('.reels-reader');
     if (reader) reader.scrollTop = 0;
+    bgMusic.play().catch(function() {});
     setupReaderLazyLoad();
   }
 

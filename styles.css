@@ -749,12 +749,43 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   justify-content: space-between;
   gap: 16px;
 }
-.reel-top > div { display: flex; gap: 8px; align-items: flex-start; }
-.reel-top img { width: 24px; height: 24px; object-fit: contain; }
-.reel-top strong,
-.reel-top span { display: block; letter-spacing: -0.2px; }
-.reel-top strong { font-size: 16px; font-weight: 700; line-height: 21px; }
-.reel-top span { margin-top: 2px; font-size: 12px; font-weight: 600; line-height: 16px; }
+/* ---- MUSIC BUTTON ---- */
+.music-btn {
+  display: grid;
+  place-items: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+.music-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
+}
+.music-bars span {
+  display: block;
+  width: 3px;
+  border-radius: 2px;
+  background: #fff;
+  height: 4px;
+  transition: height 120ms ease;
+}
+/* Animasi equalizer saat musik play */
+@keyframes bar1 { 0%,100%{height:4px} 50%{height:14px} }
+@keyframes bar2 { 0%,100%{height:10px} 50%{height:4px} }
+@keyframes bar3 { 0%,100%{height:7px} 25%{height:14px} 75%{height:3px} }
+@keyframes bar4 { 0%,100%{height:4px} 40%{height:12px} 80%{height:5px} }
+.music-btn.is-playing .music-bars span:nth-child(1) { animation: bar1 0.8s ease-in-out infinite; }
+.music-btn.is-playing .music-bars span:nth-child(2) { animation: bar2 0.7s ease-in-out infinite 0.1s; }
+.music-btn.is-playing .music-bars span:nth-child(3) { animation: bar3 0.9s ease-in-out infinite 0.05s; }
+.music-btn.is-playing .music-bars span:nth-child(4) { animation: bar4 0.75s ease-in-out infinite 0.15s; }
 .reel-top a {
   display: grid;
   place-items: center;
