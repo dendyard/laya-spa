@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orisinal - Laya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+
+    <!-- ============================================================ -->
+    <!-- VIEW 1: INDEX                                                 -->
+    <!-- ============================================================ -->
+    <div id="view-index" class="view is-active">
+      <header class="app-header">
+        <a href="#" class="app-header__back" data-goto="view-index" aria-label="Kembali">
+          <img src="assets/backarrow.svg" alt="" aria-hidden="true" />
+        </a>
+        <img src="assets/kompaslogo_ori.png" alt="Kompas" class="app-header__logo" />
+      </header>
+      <main class="original-index-page">
+        <section class="original-index-hero">
+          <img class="original-index-hero__image" src="assets/tato-dayak1.png" alt="Tato Dayak: Suara Penjaga Tradisi" />
+          <img class="original-index-hero__logo" src="assets/logo-laya.png" alt="Laya Langkah Budaya Merawat Indonesia" />
+          <div class="original-index-hero__content">
+            <h2>Tato Dayak:<br />Suara Penjaga Tradisi</h2>
+            <p>Dalam budaya Dayak, setiap tato menyimpan cerita tentang keberanian, status sosial, hingga hubungan manusia dengan alam dan roh</p>
+            <a href="#" data-goto="view-detail">Baca sekarang</a>
+          </div>
+        </section>
+
+        <section class="original-index-latest">
+          <h2>Terbaru</h2>
+          <div class="original-grid">
+            <article class="original-card" data-goto="view-detail">
+              <div class="original-card__media original-card__media--red">
+                <span>Laya</span>
+                <strong>Tato Dayak Terakhir</strong>
+              </div>
+              <h3>Bagian 1: Mengenal Pak Ding</h3>
+              <p>Tato Dayak Series</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VIEW 2: DETAIL (part=4)                                       -->
+    <!-- ============================================================ -->
+    <div id="view-detail" class="view">
+      <header class="app-header">
+        <a href="#" class="app-header__back" data-goto="view-index" aria-label="Kembali">
+          <img src="assets/backarrow.svg" alt="" aria-hidden="true" />
+        </a>
+        <img src="assets/kompaslogo_ori.png" alt="Kompas" class="app-header__logo" />
+      </header>
+      <main class="page-shell original-detail-page">
+
+        <section class="original-hero-index">
+          <div class="original-hero-index__media">
+            <img id="originalHeroImage" src="assets/tato-dayak1.png" alt="Tato Dayak Terakhir" />
+            <div class="original-hero-index__content">
+              <h1>Tato Dayak Terakhir</h1>
+              <p id="originalHeroPart">Bagian 1, Mengenal Pak Ding</p>
+              <a id="originalReaderLink" href="#" data-goto="view-reader">Mulai membaca</a>
+            </div>
+          </div>
+        </section>
+
+        <nav class="original-tabs" aria-label="Navigasi Orisinal">
+          <a class="is-active" href="#" data-original-tab="parts">Bagian</a>
+          <a href="#" data-original-tab="description">Deskripsi</a>
+        </nav>
+
+        <section class="original-description-panel" aria-label="Deskripsi Orisinal">
+          <h2>Tato Dayak Terakhir</h2>
+          <p>Serial ini menelusuri jejak tato Dayak sebagai bahasa visual, identitas, dan ingatan kebudayaan. Cerita dimulai dari Pak Ding, penjaga narasi yang memperlihatkan bagaimana tanda di tubuh menyimpan hubungan manusia dengan keluarga, alam, dan martabat.</p>
+        </section>
+
+        <section class="original-episode-list" aria-label="Daftar bagian">
+          <article class="is-current">
+            <span>1</span>
+            <div>
+              <h2>Mengenal Pak Ding</h2>
+              <time>16 Februari 2026</time>
+            </div>
+          </article>
+          <article>
+            <span>2</span>
+            <div>
+              <h2>Membaca Bahasa Visual dalam Tato Dayak</h2>
+              <time>Tayang pada 18 Februari 2026</time>
+            </div>
+          </article>
+          <article class="is-locked">
+            <span>3</span>
+            <div>
+              <h2>Ritual dan Proses Tradisional</h2>
+              <time>Tayang pada 18 Februari 2026</time>
+            </div>
+            <i aria-hidden="true"></i>
+          </article>
+          <article class="is-locked">
+            <span>4</span>
+            <div>
+              <h2>Tato sebagai Identitas dan Status Sosial</h2>
+              <time>Tayang pada 18 Februari 2026</time>
+            </div>
+            <i aria-hidden="true"></i>
+          </article>
+          <article class="is-locked">
+            <span>5</span>
+            <div>
+              <h2>Tato Dayak di Era Kontemporer</h2>
+              <time>Tayang pada 18 Februari 2026</time>
+            </div>
+            <i aria-hidden="true"></i>
+          </article>
+          <article class="is-locked">
+            <span>6</span>
+            <div>
+              <h2>Simbol Kehidupan Setelah Mati</h2>
+              <time>Tayang pada 18 Februari 2026</time>
+            </div>
+            <i aria-hidden="true"></i>
+          </article>
+          <article class="is-locked">
+            <span>7</span>
+            <div>
+              <h2>Pantangan dan Etika dalam Tato Dayak</h2>
+              <time>Tayang pada 18 Februari 2026</time>
+            </div>
+            <i aria-hidden="true"></i>
+          </article>
+          <article class="is-locked">
+            <span>8</span>
+            <div>
+              <h2>Keindahan, Kekuatan, dan Martabat</h2>
+              <time>Tayang pada 18 Februari 2026</time>
+            </div>
+            <i aria-hidden="true"></i>
+          </article>
+        </section>
+
+      </main>
+
+      <div class="premium-blocker" aria-hidden="true">
+        <button class="premium-blocker__backdrop" type="button" aria-label="Tutup"></button>
+        <section class="premium-blocker__sheet" role="dialog" aria-modal="true" aria-labelledby="premiumBlockerTitle">
+          <button class="premium-blocker__close" type="button" aria-label="Tutup">
+            <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M72 72l112 112M184 72 72 184"/></svg>
+          </button>
+          <span>Khusus Member</span>
+          <h2 id="premiumBlockerTitle">Konten Premium</h2>
+          <p>Gabung Membership KOMPAS.com+ MAX untuk mengakses konten premium ini.</p>
+          <a href="#">Gabung KOMPAS.com+ MAX</a>
+          <strong>Rp69.000/bulan atau Rp599.000/tahun</strong>
+        </section>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VIEW 3: READER (part=3 = reader-experiment-b)                 -->
+    <!-- ============================================================ -->
+    <div id="view-reader" class="view reader-experiment-b">
+      <main class="reels-reader" aria-label="Tato Dayak reader">
+
+        <section class="reel-slide reel-slide--one" aria-label="Halaman 1 dari 9">
+          <div id="videocontainer-1" class="jx-player-container" data-jx-video-id="1931697"></div>
+          <div class="reel-top">
+            <div>
+              <img src="assets/kompas-triangle.png" alt="" aria-hidden="true" />
+              <div>
+                <strong>Tato Dayak</strong>
+                <span>Bagian 1 - Mengenal Pak Ding</span>
+              </div>
+            </div>
+            <a href="#" class="reel-close-btn" aria-label="Tutup">
+              <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M72 72l112 112M184 72 72 184"/></svg>
+            </a>
+          </div>
+          <article class="reel-copy">
+            <button class="reel-sheet-handle" type="button" aria-label="Atur panel"></button>
+            <h1>Profil Pak Ding</h1>
+            <p>PERKENALKAN, ia adalah Laurensius Ding Lie. Orang-orang biasa menyapa, Pak Ding.</p>
+            <p>Pria 60 tahun itu hidup di sebuah rumah kayu sederhana. Letaknya persis di puncak bukit Ujoh Bilang, Ibu Kota Kabupaten Mahakam Hulu, Kalimantan Timur.</p>
+            <p>Berdinding kombinasi kayu ulin dan meranti, beratap seng dilapis plafon, serta berlantai tegel, rumah itu tak dihuni Pak Ding seorang diri. Istri beserta tiga orang anak ikut menemani.</p>
+            <p>Dari rumah seluas 10x25 meter persegi yang dikelilingi kebun lalu hutan belantara itu, Pak Ding bergelut dan berjuang, menjaga warisan leluhur: Tato Dayak.</p>
+            <div class="reel-page-chip">
+              <i aria-hidden="true"></i>
+              Halaman 1/9
+            </div>
+          </article>
+          <div class="reel-reader-helper" role="button" tabindex="0" aria-label="Tutup bantuan membaca">
+            <div>
+              <img src="assets/click-1.svg" alt="" aria-hidden="true" />
+              <span>Klik area text untuk melihat semua paragraf</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="reel-slide reel-slide--two" aria-label="Halaman 2 dari 9">
+          <div id="videocontainer" class="jx-player-container" data-jx-video-id="1931694"></div>
+          <div class="reel-top">
+            <div>
+              <img src="assets/kompas-triangle.png" alt="" aria-hidden="true" />
+              <div>
+                <strong>Tato Dayak</strong>
+                <span>Bagian 1 - Mengenal Pak Ding</span>
+              </div>
+            </div>
+            <a href="#" class="reel-close-btn" aria-label="Tutup">
+              <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M72 72l112 112M184 72 72 184"/></svg>
+            </a>
+          </div>
+          <article class="reel-copy">
+            <button class="reel-sheet-handle" type="button" aria-label="Atur panel"></button>
+            <p>"Selamat datang di Mahakam Ulu," sambut Pak Ding kepada tim Kompas.com, Adhyasta Dirgantara dan Pandawa Borniat.</p>
+            <p>Kedua tangannya direntangkan seperti hendak memeluk kami, para tamu jauhnya itu.</p>
+            <p>Kami membalas, "Selamat siang Pak."</p>
+            <p>Di mata kami, Pak Ding tampak sangat bersahaja. Ia mengenakan celana pendek, kaos hitam, dan topi terbuat dari rotan. Namanya Tapu Wi.</p>
+            <p>"Ayo nyantai dulu, kita ngopi sambil ngobrol-ngobrol," kata Pak Ding lagi.</p>
+            <div class="reel-page-chip"><i aria-hidden="true"></i> Halaman 2/9</div>
+          </article>
+        </section>
+
+        <section class="reel-slide reel-slide--three" aria-label="Halaman 3 dari 9">
+          <div id="videocontainer-3" class="jx-player-container" data-jx-video-id="1931696"></div>
+          <div class="reel-top">
+            <div>
+              <img src="assets/kompas-triangle.png" alt="" aria-hidden="true" />
+              <div>
+                <strong>Tato Dayak</strong>
+                <span>Bagian 1 - Mengenal Pak Ding</span>
+              </div>
+            </div>
+            <a href="#" class="reel-close-btn" aria-label="Tutup">
+              <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M72 72l112 112M184 72 72 184"/></svg>
+            </a>
+          </div>
+          <article class="reel-copy">
+            <button class="reel-sheet-handle" type="button" aria-label="Atur panel"></button>
+            <p>Pak Ding merupakan anak keturunan asli dari Dayak Aoheng.</p>
+            <p>Suku Dayak Aoheng sama dengan Suku Dayak Penihing. Mereka termasuk dalam sub-kelompok Dayak Punan.</p>
+            <p>Suku Dayak Punan sendiri adalah satu dari enam rumpun utama Suku Dayak yang tinggal di Pulau Borneo.</p>
+            <p>Orang-orang Suku Dayak Aoheng awalnya tinggal nomaden di sekitar Pegunungan Muller-Pegunungan Schwaner, Kalimantan Timur, sebelum akhirnya menetap di wilayah Kabupaten Mahakam Hulu. Pak Ding salah satunya.</p>
+            <div class="reel-page-chip"><i aria-hidden="true"></i> Halaman 3/9</div>
+          </article>
+        </section>
+
+        <section class="reel-slide reel-slide--four" aria-label="Halaman 4 dari 9">
+          <div id="videocontainer-4" class="jx-player-container" data-jx-video-id="1931695"></div>
+          <div class="reel-top">
+            <div>
+              <img src="assets/kompas-triangle.png" alt="" aria-hidden="true" />
+              <div>
+                <strong>Tato Dayak</strong>
+                <span>Bagian 1 - Mengenal Pak Ding</span>
+              </div>
+            </div>
+            <a href="#" class="reel-close-btn" aria-label="Tutup">
+              <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M72 72l112 112M184 72 72 184"/></svg>
+            </a>
+          </div>
+          <article class="reel-copy">
+            <button class="reel-sheet-handle" type="button" aria-label="Atur panel"></button>
+            <p>Kepada kami, Pak Ding mengaku sudah menekuni tradisi tato Dayak sejak berusia 15 tahun.</p>
+            <p>Kala itu, Ding remaja ingin mendalami lebih jauh makna tato Dayak warisan leluhurnya.</p>
+            <p>Keinginan itu menuntunnya berguru ke kakeknya sendiri bernama Paron.</p>
+            <p>"Beliaulah yang selalu mengajari saya teknik menato dan desain tato sesuai dengan etnis dan kasta," ujar Pak Ding.</p>
+            <div class="reel-page-chip"><i aria-hidden="true"></i> Halaman 4/9</div>
+          </article>
+        </section>
+
+        <section class="reel-slide reel-slide--five" aria-label="Halaman 5 dari 9">
+          <div id="videocontainer-5" class="jx-player-container" data-jx-video-id="1931698"></div>
+          <div class="reel-top">
+            <div>
+              <img src="assets/kompas-triangle.png" alt="" aria-hidden="true" />
+              <div>
+                <strong>Tato Dayak</strong>
+                <span>Bagian 1 - Mengenal Pak Ding</span>
+              </div>
+            </div>
+            <a href="#" class="reel-close-btn" aria-label="Tutup">
+              <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M72 72l112 112M184 72 72 184"/></svg>
+            </a>
+          </div>
+          <article class="reel-copy">
+            <button class="reel-sheet-handle" type="button" aria-label="Atur panel"></button>
+            <p>Pak Ding melanjutkan, hal pertama yang diajarkan Paron kepadanya adalah makna tato bagi Suku Dayak.</p>
+            <p>Para leluhur dan keturunannya kini percaya ketika mereka tiada, akan memasuki sebuah lorong gelap gulita.</p>
+            <p>Tato yang dirajah di sekujur tubuh akan mengeluarkan cahaya dan menuntun mereka berjalan ke ujung lorong, surga.</p>
+            <p>"Itulah yang terus kakek saya katakan dan saya teruskan kepada siapapun," ujar Pak Ding.</p>
+            <p>Seiring berjalannya waktu, Pak Ding pun dipercaya menjadi salah satu penerus tradisi tato Dayak tradisional, bahkan sampai diakui secara resmi oleh Pemerintah Provinsi Kalimantan Timur.</p>
+            <div class="reel-page-chip"><i aria-hidden="true"></i> Halaman 5/9</div>
+          </article>
+        </section>
+
+        <section class="reel-slide reel-slide--six" aria-label="Halaman 6 dari 9">
+          <div id="videocontainer-6" class="jx-player-container" data-jx-video-id="1931700"></div>
+          <div class="reel-top">
+            <div>
+              <img src="assets/kompas-triangle.png" alt="" aria-hidden="true" />
+              <div>
+                <strong>Tato Dayak</strong>
+                <span>Bagian 1 - Mengenal Pak Ding</span>
+              </div>
+            </div>
+            <a href="#" class="reel-close-btn" aria-label="Tutup">
+              <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M72 72l112 112M184 72 72 184"/></svg>
+            </a>
+          </div>
+          <article class="reel-copy">
+            <button class="reel-sheet-handle" type="button" aria-label="Atur panel"></button>
+            <p>Meski bermuara pada satu filosofi, setiap tato Suku Dayak Penihing memiliki motif yang berbeda-beda beserta artinya masing-masing.</p>
+            <p>Motif binatang biasanya direpresentasikan dengan bentuk naga, burung enggang, harimau, dan anjing.</p>
+            <p>Motif naga melambangkan kekuatan, kebijaksanaan, dan perlindungan. Motif burung enggang (rangkong) melambangkan keindahan, kedamaian, dan keharmonisan dengan alam.</p>
+            <p>Sementara motif harimau melambangkan keberanian dan kekuatan. Adapun, motif anjing (aso) memiliki arti penjaga dan pelindung.</p>
+            <div class="reel-page-chip"><i aria-hidden="true"></i> Halaman 6/9</div>
+          </article>
+        </section>
+
+        <section class="reel-slide reel-slide--seven" aria-label="Halaman 7 dari 9">
+          <div id="videocontainer-7" class="jx-player-container" data-jx-video-id="1931699"></div>
+          <div class="reel-top">
+            <div>
+              <img src="assets/kompas-triangle.png" alt="" aria-hidden="true" />
+              <div>
+                <strong>Tato Dayak</strong>
+                <span>Bagian 1 - Mengenal Pak Ding</span>
+              </div>
+            </div>
+            <a href="#" class="reel-close-btn" aria-label="Tutup">
+              <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M72 72l112 112M184 72 72 184"/></svg>
+            </a>
+          </div>
+          <article class="reel-copy">
+            <button class="reel-sheet-handle" type="button" aria-label="Atur panel"></button>
+            <p>Untuk motif tumbuhan, direpresentasikan dengan bentuk bunga terong yang melambangkan kedewasaan, kemampuan beradaptasi, dan merepresentasikan kekayaan alam Kalimantan.</p>
+            <p>"Tato ini menunjukkan status di suku dan kedewasaan. Artinya, saya sudah siap mengabdi kepada keluarga sekaligus berbuat kebaikan untuk masyarakat," ujar Pak Ding sembari memperlihatkan tato bunga terong di leher dan bahunya.</p>
+            <p>Penempatan tato di leher depan pun memiliki arti khusus. Hanya orang dengan kasta tinggi dan keturunan kerajaan pada Suku Dayak Aoheng saja yang boleh ditato pada bagian leher.</p>
+            <p>"Tato itu menandakan satu identitas suatu suku itu dan bukan untuk bergaya atau menunjukkan kebolehan, kemampuan," lanjut dia.</p>
+            <div class="reel-page-chip"><i aria-hidden="true"></i> Halaman 7/9</div>
+          </article>
+        </section>
+
+        <section class="reel-slide reel-slide--eight" aria-label="Halaman 8 dari 9">
+          <div id="videocontainer-8" class="jx-player-container" data-jx-video-id="1931701"></div>
+          <div class="reel-top">
+            <div>
+              <img src="assets/kompas-triangle.png" alt="" aria-hidden="true" />
+              <div>
+                <strong>Tato Dayak</strong>
+                <span>Bagian 1 - Mengenal Pak Ding</span>
+              </div>
+            </div>
+            <a href="#" class="reel-close-btn" aria-label="Tutup">
+              <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M72 72l112 112M184 72 72 184"/></svg>
+            </a>
+          </div>
+          <article class="reel-copy">
+            <button class="reel-sheet-handle" type="button" aria-label="Atur panel"></button>
+            <p>Tidak hanya itu, ada pula tato motif manusia dalam pose dan mengenakan atribut tertentu. Biasanya gaya motif tato bukan realis, melainkan abstrak.</p>
+            <p>Tato motif ini melambangkan status sosial atau pengalaman hidup tertentu yang pernah dialami.</p>
+            <p>Beberapa motif manusia juga dijadikan kenangan akan figur nenek moyang atau tokoh penting dalam Suku Dayak. Hal itu didedikasikan kepada orang yang berjasa bagi sukunya.</p>
+            <p>Pada masa lampau misalnya, akan diberikan kepada anggota suku yang memenggal kepala suku lawan dalam sebuah peperangan.</p>
+            <p>Sementara untuk wanita, tato dirajah di punggung jari sebagai penanda telah beranjak remaja. Lalu, tato itu diteruskan ke pergelangan tangan, sebagai pertanda ia sudah menikah dan memiliki suami.</p>
+            <div class="reel-page-chip"><i aria-hidden="true"></i> Halaman 8/9</div>
+          </article>
+        </section>
+
+        <section class="reel-slide reel-slide--nine" aria-label="Halaman 9 dari 9">
+          <div id="videocontainer-9" class="jx-player-container" data-jx-video-id="1931703"></div>
+          <div class="reel-top">
+            <div>
+              <img src="assets/kompas-triangle.png" alt="" aria-hidden="true" />
+              <div>
+                <strong>Tato Dayak</strong>
+                <span>Bagian 1 - Mengenal Pak Ding</span>
+              </div>
+            </div>
+            <a href="#" class="reel-close-btn" aria-label="Tutup">
+              <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M72 72l112 112M184 72 72 184"/></svg>
+            </a>
+          </div>
+          <article class="reel-copy">
+            <button class="reel-sheet-handle" type="button" aria-label="Atur panel"></button>
+            <p>Ada pula tato dengan motif benda-benda yang biasa digunakan sehari-hari. Salah satunya seperti motif dayung yang terlukis di betis belakang Pak Ding.</p>
+            <p>"Ini sebagai tanda kami hidup di pinggir Sungai Mahakam," ujar dia.</p>
+            <p>Perbincangan tentang arti tato bermuara kepada rasa penasaran, bagaimana tahapan mereka memulai tradisi itu.</p>
+            <p>Seolah menangkap cita-cita kami, Pak Ding mengajak kami masuk hutan belantara di belakang rumahnya.</p>
+            <p>Sebagaimana para leluhurnya dahulu, Pak Ding akan memulai proses merajah tubuh, dimulai dari pencarian bahan baku.</p>
+            <div class="reel-page-chip"><i aria-hidden="true"></i> Halaman 9/9</div>
+          </article>
+        </section>
+
+      </main>
+    </div>
+
+    <script src="https://asset.kgnow.com/2026/02/24/js/jxvideo.3.1.2.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
