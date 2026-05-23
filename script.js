@@ -34,6 +34,24 @@ document.addEventListener('click', function(e) {
   }
 });
 
+// ---- READER INTRO ----
+var introFallbackTimer = null;
+var introMinTimer = null;
+var introMinReady = false;
+var introVideoPending = false;
+
+function dismissReaderIntro() {
+  // Tunggu minimum durasi terpenuhi dulu
+  if (!introMinReady) { introVideoPending = true; return; }
+  var overlay = document.getElementById('readerIntroOverlay');
+  var viewReader = document.getElementById('view-reader');
+  if (!overlay || overlay.classList.contains('is-hidden')) return;
+  overlay.classList.add('is-hidden');
+  viewReader.classList.add('reader-revealed');
+  if (introFallbackTimer) { clearTimeout(introFallbackTimer); introFallbackTimer = null; }
+  if (introMinTimer) { clearTimeout(introMinTimer); introMinTimer = null; }
+}
+
 function showView(id, pushState) {
   document.querySelectorAll('.view').forEach(function(v) {
     v.classList.remove('is-active');
@@ -50,10 +68,35 @@ function showView(id, pushState) {
   if (id !== 'view-reader') {
     window.scrollTo(0, 0);
   } else {
+    // Reset intro overlay setiap kali masuk reader
+    introMinReady = false;
+    introVideoPending = false;
+    if (introMinTimer) clearTimeout(introMinTimer);
+    if (introFallbackTimer) clearTimeout(introFallbackTimer);
+
+    var overlay = document.getElementById('readerIntroOverlay');
+    if (overlay) overlay.classList.remove('is-hidden');
+    target.classList.remove('reader-revealed');
+
     var reader = target.querySelector('.reels-reader');
     if (reader) reader.scrollTop = 0;
+    bgMusic.currentTime = 0;
     bgMusic.play().catch(function() {});
     setupReaderLazyLoad();
+
+    // Minimum 1.5 detik overlay tampil — setelah itu dismiss jika video sudah siap
+    introMinTimer = window.setTimeout(function() {
+      introMinReady = true;
+      if (introVideoPending) {
+        dismissReaderIntro();
+      }
+    }, 1500);
+
+    // Fallback mutlak: 8 detik
+    introFallbackTimer = window.setTimeout(function() {
+      introMinReady = true;
+      dismissReaderIntro();
+    }, 8000);
   }
 
   if (pushState !== false) {
@@ -163,6 +206,7 @@ function initJxPlayer(slide, container) {
   p.loadVideoById(parseInt(container.dataset.jxVideoId, 10));
   p.addEventListener('video_start', function() {
     slide.classList.remove('is-video-loading');
+    dismissReaderIntro();
   });
   var videoId = parseInt(container.dataset.jxVideoId, 10);
   p.addEventListener('ended', function() {
