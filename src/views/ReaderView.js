@@ -76,14 +76,72 @@ export async function renderReaderView(container, { onClose }) {
   initReaderIntro(overlay, container)
   registerMusicButtons(container.querySelectorAll('.music-btn'))
 
-  // Music toggle and close
+  // Music toggle, close, helper dismiss, and reel-copy expand/collapse
   container.addEventListener('click', e => {
-    if (e.target.closest('.music-btn')) toggleMusic()
+    // Music
+    if (e.target.closest('.music-btn')) { toggleMusic(); return }
+
+    // Close reader
     if (e.target.closest('.reel-close-btn')) {
       e.preventDefault()
       onClose()
+      return
+    }
+
+    // Helper overlay dismiss
+    const helper = e.target.closest('.reel-reader-helper')
+    if (helper) {
+      helper.classList.add('is-hidden')
+      return
+    }
+
+    // Sheet handle → collapse
+    if (e.target.closest('.reel-sheet-handle')) {
+      const slide = e.target.closest('.reel-slide')
+      if (slide) collapseSlide(slide)
+      return
+    }
+
+    // reel-copy tap → expand (only if user didn't scroll)
+    const copy = e.target.closest('.reel-copy')
+    if (copy) {
+      const slide = copy.closest('.reel-slide')
+      if (slide && !slide.classList.contains('is-expanded') && !copy._didScroll) {
+        expandSlide(slide)
+      }
+      return
+    }
+
+    // Click outside copy while expanded → collapse
+    const expandedSlide = e.target.closest('.reel-slide.is-expanded')
+    if (expandedSlide && !e.target.closest('.reel-copy')) {
+      collapseSlide(expandedSlide)
     }
   })
+
+  // Drag sheet handle to collapse
+  container.addEventListener('pointerdown', e => {
+    const handle = e.target.closest('.reel-sheet-handle')
+    if (!handle) return
+    const slide = handle.closest('.reel-slide')
+    if (!slide) return
+
+    let startY = e.clientY
+    const onMove = ev => {
+      if (ev.clientY - startY > 60) {
+        collapseSlide(slide)
+        window.removeEventListener('pointermove', onMove)
+        window.removeEventListener('pointerup', onMove)
+      }
+    }
+    window.addEventListener('pointermove', onMove)
+    window.addEventListener('pointerup', () => {
+      window.removeEventListener('pointermove', onMove)
+    }, { once: true })
+  })
+
+  // Scroll reel-copy to end → advance to next slide
+  setupCopyScrollPassthrough(main)
 
   // JX lazy load
   setupLazyLoad(main, () => dismissIntro())
@@ -146,6 +204,104 @@ function unloadSlideMedia(slide) {
   if (!container) return
   const p = getPlayer(slide)
   if (p) { try { p.pause() } catch {} }
+}
+
+function setupCopyScrollPassthrough(reelsReader) {
+  // ── Wheel (desktop) ──────────────────────────────────────────────────────
+  reelsReader.addEventListener('wheel', e => {
+    const copy = e.target.closest('.reel-copy')
+    if (!copy) return
+
+    copy._didScroll = true
+
+    const atBottom = copy.scrollHeight - copy.scrollTop - copy.clientHeight < 2
+    const scrollingDown = e.deltaY > 0
+
+    if (!scrollingDown) {
+      copy._reachedBottom = false
+      return
+    }
+
+    if (atBottom) {
+      if (copy._reachedBottom) {
+        // Sudah di bottom & user scroll lagi → pindah slide
+        e.preventDefault()
+        copy._reachedBottom = false
+        scrollToNextSlide(reelsReader, copy.closest('.reel-slide'))
+      } else {
+        // Baru pertama kali sampai bottom → tandai dulu
+        copy._reachedBottom = true
+      }
+    } else {
+      copy._reachedBottom = false
+    }
+  }, { passive: false })
+
+  // ── Touch (mobile) ───────────────────────────────────────────────────────
+  let touchStartY = 0
+
+  reelsReader.addEventListener('touchstart', e => {
+    const copy = e.target.closest('.reel-copy')
+    if (!copy) return
+    touchStartY = e.touches[0].clientY
+    copy._didScroll = false
+  }, { passive: true })
+
+  reelsReader.addEventListener('touchmove', e => {
+    const copy = e.target.closest('.reel-copy')
+    if (!copy) return
+    if (Math.abs(e.touches[0].clientY - touchStartY) > 5) {
+      copy._didScroll = true
+    }
+  }, { passive: true })
+
+  reelsReader.addEventListener('touchend', e => {
+    const copy = e.target.closest('.reel-copy')
+    if (!copy) return
+
+    const deltaY = touchStartY - e.changedTouches[0].clientY
+    const atBottom = copy.scrollHeight - copy.scrollTop - copy.clientHeight < 4
+    const swipedUp = deltaY > 30
+
+    if (swipedUp && atBottom) {
+      if (copy._reachedBottom) {
+        copy._reachedBottom = false
+        scrollToNextSlide(reelsReader, copy.closest('.reel-slide'))
+      } else {
+        copy._reachedBottom = true
+      }
+    } else if (deltaY < -10) {
+      // Swipe down → reset
+      copy._reachedBottom = false
+    }
+
+    // Reset didScroll flag setelah click event selesai
+    setTimeout(() => { copy._didScroll = false }, 100)
+  }, { passive: true })
+}
+
+function scrollToNextSlide(reelsReader, currentSlide) {
+  if (!currentSlide) return
+  const slides = Array.from(reelsReader.querySelectorAll('.reel-slide'))
+  const idx = slides.indexOf(currentSlide)
+  const next = slides[idx + 1]
+  if (next) {
+    next.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
+function expandSlide(slide) {
+  slide.classList.add('is-expanded')
+  // Scroll copy to top when expanding
+  const copy = slide.querySelector('.reel-copy')
+  if (copy) copy.scrollTop = 0
+}
+
+function collapseSlide(slide) {
+  slide.classList.add('is-closing')
+  setTimeout(() => {
+    slide.classList.remove('is-expanded', 'is-closing')
+  }, 260)
 }
 
 function numberToWord(n) {

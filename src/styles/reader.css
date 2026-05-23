@@ -192,10 +192,13 @@
   bottom: 72px;
   left: 20px;
   z-index: 4;
-  max-height: 52vh;
-  overflow: visible;
-  cursor: pointer;
+  max-height: 35vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  cursor: default;
 }
+.reel-copy::-webkit-scrollbar { display: none; }
 .reel-copy h1 {
   margin: 0 0 8px;
   font-size: 20px;
@@ -204,20 +207,14 @@
   line-height: 26px;
 }
 .reel-copy p {
-  display: none;
-  margin: 0;
-  overflow: hidden;
+  display: block;
+  margin: 0 0 12px;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: -0.2px;
   line-height: 24px;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
 }
-.reel-copy p:nth-of-type(-n + 2) { display: block; }
-.reel-copy p:nth-of-type(2) { display: -webkit-box; }
-.reel-copy p:nth-of-type(n + 3),
+.reel-copy p:last-of-type { margin-bottom: 0; }
 .reel-copy .reel-page-chip { display: none; }
 
 /* reader-experiment-b (part=3) styles */
